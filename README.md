@@ -5,8 +5,6 @@
 This project is a group project to implement a Monty language interpreter for handling stack and queue operations. It involves working with stacks and queues, implementing various operations, and understanding the Monty ByteCode files.
 
 ## Team Members
-
-- Julien Barbier
 - Khalfani Khalfan
 
 ## Project Timeline
