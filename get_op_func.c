@@ -1,8 +1,9 @@
 #include "monty.h"
 /**
- * get_op_func - selects the correct function to perform
+ * *get_op_func - selects the correct function to perform
  *               the operation aske by the user
  * @s: operator passed by the user
+ * Return: returns the searched function or null if not foud
  */
 void (*get_op_func(char *s))(stack_t **stack, unsigned int)
 {
@@ -20,7 +21,7 @@ void (*get_op_func(char *s))(stack_t **stack, unsigned int)
 
 		if (strcmp(ops[i].opcode, s) == 0)
 		{
-		  return (ops[i].f);
+			return (ops[i].f);
 		}
 
 		i++;

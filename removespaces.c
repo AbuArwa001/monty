@@ -87,8 +87,8 @@ void remove_emptyspaces(char *str)
 
 	while (i >= 0)
 	{
-	  if ((str && str[i] == ' ') ||
-	      (str[i] == '\t'))
+		if ((str && str[i] == ' ') ||
+				(str[i] == '\t') || (str[i] == '\n'))
 			i--;
 		else
 			break;
@@ -96,12 +96,12 @@ void remove_emptyspaces(char *str)
 
 	if ((str))
 	{
-	       str[i + 1] = '\0';
+		str[i + 1] = '\0';
 	}
 
 
-while ((str && str[count] == ' ' )||
-       (str[count] == '\t'))
+	while ((str && str[count] == ' ') ||
+			(str[count] == '\t') || (str[i] == '\n'))
 		count++;
 
 	if (count != 0)

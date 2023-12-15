@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define _POSIX_C_SOURCE 200809L
+
 /**
  * _strdup - duplicates the string and returns a pointer to new string
  * @str: string to be duplicated
@@ -41,7 +42,7 @@ int tokenize(char ***arr, char *strn, char *delim)
 	if (strn == NULL)
 		return (tokens);
 
-	strl =_strdup(strn);
+	strl = _strdup(strn);
 	strln = strtok(strl, delim);
 
 	while (strln)

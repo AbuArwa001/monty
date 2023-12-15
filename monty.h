@@ -17,9 +17,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 extern int data;
 /**
@@ -31,10 +31,10 @@ extern int data;
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-void (*get_op_func (char *s))(stack_t **stack, unsigned int);
+void (*get_op_func(char *s))(stack_t **stack, unsigned int);
 /**
  * remove_emptyspaces - remove white spaces
  * @str: string to remove white spaces
@@ -51,14 +51,32 @@ void remove_emptyspaces(char *str);
 int tokenize(char ***arr, char *strn, char *delim);
 /**
  * push - inserts in an doubly linked list
- * @stack: datastructure to be modified
- *
+ * @temp: datastructure to be modified
+ * @line_number: line number to be tracked
 */
-void push(stack_t **temp, unsigned int);
+void push(stack_t **temp, unsigned int line_number);
 /**
  * push - inserts in an doubly linked list
- * @stack: datastructure to be modified
- *
+ * @temp: datastructure to be modified
+ * @line_number: line number to be tracked
 */
-void pall(stack_t **temp, unsigned int);
+void pall(stack_t **temp, unsigned int line_number);
+/**
+ * free_arr - frees an array for tokenization
+ * @arr: array to be freed
+ * @tokens: number of tokens to be freed
+*/
+void free_arr(char ***arr, int tokens);
+/**
+ * free_dlistint - free list
+ * @head: head of the list
+*/
+void free_dlistint(stack_t *head);
+/**
+ * _strdup - duplicates the string and returns a pointer to new string
+ * @str: string to be duplicated
+ * Return: returns the duplicates the of the string
+ *         returns NULL if ERROR
+ */
+char *_strdup(char *str);
 #endif
