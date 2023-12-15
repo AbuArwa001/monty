@@ -20,11 +20,6 @@ void process_file(FILE *file)
 			continue;
 		tk_size = tokenize(&tok, line, " ");
 		line_number++;
-		if (!tok[0])
-		{
-			fprintf(stderr, "L<%d>: unknown instruction <%s>\n", line_number, tok[0]);
-			exit(EXIT_FAILURE);
-		}
 
 		if (!tok[1] && tok[0])
 			tok[1] = _strdup("0");
