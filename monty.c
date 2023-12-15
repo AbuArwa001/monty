@@ -16,9 +16,10 @@ void process_file(FILE *file)
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
 		remove_emptyspaces(line);
+		if (strlen(line) == 0)
+			continue;
 		tk_size = tokenize(&tok, line, " ");
 		line_number++;
-
 		if (!tok[0])
 		{
 			fprintf(stderr, "L<%d>: unknown instruction <%s>\n", line_number, tok[0]);
