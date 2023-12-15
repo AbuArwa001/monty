@@ -4,7 +4,7 @@
  *               the operation aske by the user
  * @s: operator passed by the user
  */
-int (*get_op_func(char *s))(stack_t **stack, unsigned int)
+void (*get_op_func(char *s))(stack_t **stack, unsigned int)
 {
 	instruction_t ops[] = {
 		{"push", push},
@@ -20,7 +20,7 @@ int (*get_op_func(char *s))(stack_t **stack, unsigned int)
 
 		if (strcmp(ops[i].opcode, s) == 0)
 		{
-			return (ops[i].f);
+		  return (ops[i].f);
 		}
 
 		i++;

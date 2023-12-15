@@ -1,4 +1,5 @@
 #include <stdbool.h>
+#include <string.h>
 
 /**
  * _isspace - Custom implementation of isspace function
@@ -74,45 +75,45 @@ void remove_extra_spaces(char *input)
  * @str: string to remove white spaces
  *
 */
-void remove_emptyspaces(char **str)
+void remove_emptyspaces(char *str)
 {
 	int i = 0, count = 0;
 
-	if (*str)
+	if (str)
 	{
-		i = strlen(*str) - 1;
+		i = strlen(str) - 1;
 	}
 
 
 	while (i >= 0)
 	{
-		if ((*str) && ((*str)[i] == ' ' ||
-					(*str)[i] == '\t'))
+	  if ((str && str[i] == ' ') ||
+	      (str[i] == '\t'))
 			i--;
 		else
 			break;
 	}
 
-	if ((*str))
+	if ((str))
 	{
-		(*str)[i + 1] = '\0';
+	       str[i + 1] = '\0';
 	}
 
 
-	while ((*str) && ((*str)[count] == ' ' ||
-				(*str)[count] == '\t'))
+while ((str && str[count] == ' ' )||
+       (str[count] == '\t'))
 		count++;
 
 	if (count != 0)
 	{
 		i = 0;
 
-		while ((*str)[i + count] != '\0')
+		while (str[i + count] != '\0')
 		{
-			(*str)[i] = (*str)[i + count];
+			str[i] = str[i + count];
 			i++;
 		}
-		(*str)[i] = '\0';
+		str[i] = '\0';
 	}
-	remove_extra_spaces(*str);
+	remove_extra_spaces(str);
 }

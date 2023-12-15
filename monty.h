@@ -5,6 +5,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdio.h>
+#include <string.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -33,13 +34,13 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-int (*get_op_func (char *s))(stack_t **stack, unsigned int);
+void (*get_op_func (char *s))(stack_t **stack, unsigned int);
 /**
  * remove_emptyspaces - remove white spaces
  * @str: string to remove white spaces
  *
 */
-void remove_emptyspaces(char **str);
+void remove_emptyspaces(char *str);
 /**
  * tokenize - tokenize the string and save them in an arrray
  * @arr: array to be modifieda and save tokens
