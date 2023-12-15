@@ -35,7 +35,7 @@ void process_file(FILE *file)
 			get_op_func(tok[0])(&temp, line_number);
 		else
 		{
-			fprintf(stderr, "L<%d>: unknown instruction <%s>\n", line_number, tok[0]);
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, tok[0]);
 			exit(EXIT_FAILURE);
 		}
 
