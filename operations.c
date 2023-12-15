@@ -12,13 +12,14 @@ void push(stack_t **temp, unsigned int line_number)
 
 	if (data == -9999)
 	{
-		fprintf(stderr, "L<%d>: usage: push integer\n", line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
 	if (pointer == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
@@ -54,7 +55,7 @@ void pall(stack_t **temp, unsigned int line_number)
 	pointer = *temp;
 	if (data == -9999)
 	{
-		fprintf(stderr, "L<%d>: usage: push integer\n", line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
