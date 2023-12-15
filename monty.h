@@ -79,4 +79,10 @@ void free_dlistint(stack_t *head);
  *         returns NULL if ERROR
  */
 char *_strdup(char *str);
+/**
+ * _atoi - converts string to int
+ * @str: string to be converted
+ * Return: returns an integer
+*/
+int *_atoi(char *str);
 #endif

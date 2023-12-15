@@ -12,6 +12,7 @@ void process_file(FILE *file)
 	char **tok = NULL;
 	unsigned int line_number = 0, tk_size = 0;
 	stack_t *temp = NULL;
+	int *dt = 0;
 
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
@@ -20,12 +21,12 @@ void process_file(FILE *file)
 			continue;
 		tk_size = tokenize(&tok, line, " ");
 		line_number++;
-
-		if (!tok[1] && tok[0])
-			tok[1] = _strdup("0");
-
-		data = atoi(tok[1]);
-
+		dt = _atoi(tok[1]);
+		if (dt)
+			data = *dt;
+		else
+			data = -9999;
+		free(dt);
 		if (get_op_func(tok[0]) != NULL)
 			get_op_func(tok[0])(&temp, line_number);
 		else
