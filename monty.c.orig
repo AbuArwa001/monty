@@ -1,0 +1,38 @@
+#include "monty.h"
+int line_number = 0;
+
+/**
+ * main - execute monty code
+ * Return: returns zero on success 1 on failure
+*/
+int main(int argc, char const *argv[])
+{
+	FILE *file;
+	char line [120];
+
+	if (argc == 1 || argc > 2)
+	{
+		printf("USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+	file = fopen(filename, "r+");
+	if (file != NULL)
+	{
+		while (fgets(line, sizeof(line), file) != NULL)
+		{
+			fprintf(stdout, "%s", line);
+		}
+
+		fclose(file);
+	}
+	else
+	{
+		printf("Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
+
+	if (argc == 0 || argc > 1)
+		exit(EXIT_FAILURE);
+
+	return 0;
+}
