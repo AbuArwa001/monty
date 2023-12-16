@@ -55,35 +55,16 @@ void sub(stack_t **temp, unsigned int line_number)
 
 	stack_t *pointer = NULL;
 	stack_t *pointer2 = NULL;
-	int i = 0, j = 0, flag = 0;
 
-	if (*temp == NULL || temp == NULL)
+	if (*temp == NULL || (*temp)->next == NULL)
 	{
 		op_err(line_number, "sub");
 	}
 	pointer = *temp;
-	while (pointer->next != NULL)
-	{
-		pointer = pointer->next;
-		i++;
-		flag = 1;
-	}
-	pointer2 = *temp;
-	while (j < (i - 1))
-	{
-		pointer2 = pointer2->next;
-		j++;
-	}
-	if (i == 0 && flag == 0)
-		free_dlistint(*temp), op_err(line_number, "sub");
-	else
-	{
-		pointer2->n = pointer2->n - pointer->n;
-		pointer2->next = NULL;
-		free(pointer);
-		pointer = NULL;
-		return;
-	}
+	pointer2 = (*temp)->next;
+	pointer2->n = pointer2->n - pointer->n;
+	*temp = pointer2;
+	free(pointer);
 }
 /**
  * mul - Mul 2nd val from top of a stack_t by top value.
