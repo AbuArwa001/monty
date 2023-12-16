@@ -39,7 +39,8 @@ void mod_m(stack_t **temp, unsigned int line_number)
 
 	if (*temp == NULL || (*temp)->next == NULL)
 	{
-		op_err(line_number, "div");
+		free_dlistint(*temp);
+		op_err(line_number, "mod");
 	}
 	pointer = *temp;
 	pointer2 = (*temp)->next;
