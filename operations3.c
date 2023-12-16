@@ -68,7 +68,7 @@ void pstr_t(stack_t **temp, unsigned int line_number)
 	if (*temp == NULL)
 	{
 		printf("\n");
-		exit(0);
+		return;
 	}
 	pointer = *temp;
 	if (pointer->next == NULL && line_number == 2 &&
