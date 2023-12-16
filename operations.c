@@ -115,7 +115,8 @@ void swap(stack_t **temp, unsigned int line_number)
 	pointer = (*temp)->next;
 
 	(*temp)->next = pointer->next;
-	(*temp)->next->prev = *temp;
+	if (pointer->next != NULL)
+		(*temp)->next->prev = *temp;
 	pointer->next = *temp;
 	pointer->prev = NULL;
 	(*temp)->prev = pointer;
