@@ -71,15 +71,13 @@ void pstr_t(stack_t **temp, unsigned int line_number)
 		return;
 	}
 	pointer = *temp;
-	if (pointer->next == NULL && line_number == 2 &&
-	(pointer->n < 0 || pointer->n >= 127))
-	{
-		printf("\n");
-		free_dlistint(*temp);
-		exit(0);
-	}
 	while (pointer->next != NULL)
 	{
+		if (pointer->n <= 0 || pointer->n >= 127)
+		{
+			printf("\n");
+			return;
+		}
 		if (pointer->n > 0 && pointer->n < 127)
 		{
 			printf("%c", pointer->n);
@@ -87,11 +85,7 @@ void pstr_t(stack_t **temp, unsigned int line_number)
 		}
 		else
 			pointer = pointer->next;
-		if (pointer->n <= 0 || pointer->n >= 127)
-		{
-			printf("\n");
-			return;
-		}
+
 	}
 	printf("%c\n", pointer->n);
 }
