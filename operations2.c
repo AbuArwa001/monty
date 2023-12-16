@@ -17,11 +17,11 @@ void pop(stack_t **temp, unsigned int line_number)
 	if (temp == NULL)
 	{
 		free_dlistint(*temp);
-		pop_e(line_number); }
+		pop_err(line_number); }
 	if (*temp == NULL)
 	{
 		free_dlistint(*temp);
-		pop_e(line_number); }
+		pop_err(line_number); }
 	pointer = *temp;
 	while (pointer->next != NULL)
 	{
@@ -63,7 +63,7 @@ void add(stack_t **temp, unsigned int line_number)
 
 	if (*temp == NULL || temp == NULL)
 	{
-		op_e(line_number, "add");
+		op_err(line_number, "add");
 	}
 	pointer = *temp;
 	while (pointer->next != NULL)
@@ -79,7 +79,7 @@ void add(stack_t **temp, unsigned int line_number)
 		j++;
 	}
 	if (i == 0 && flag == 0)
-		free_dlistint(*temp), op_e(line_number, "add");
+		free_dlistint(*temp), op_err(line_number, "add");
 	else
 	{
 		pointer2->n = pointer2->n + pointer->n;
@@ -105,7 +105,7 @@ void sub(stack_t **temp, unsigned int line_number)
 
 	if (*temp == NULL || temp == NULL)
 	{
-		op_e(line_number, "sub");
+		op_err(line_number, "sub");
 	}
 	pointer = *temp;
 	while (pointer->next != NULL)
@@ -121,7 +121,7 @@ void sub(stack_t **temp, unsigned int line_number)
 		j++;
 	}
 	if (i == 0 && flag == 0)
-		free_dlistint(*temp), op_e(line_number, "sub");
+		free_dlistint(*temp), op_err(line_number, "sub");
 	else
 	{
 		pointer2->n = pointer2->n - pointer->n;
@@ -145,7 +145,7 @@ void mul(stack_t **temp, unsigned int line_number)
 
 	if (*temp == NULL || temp == NULL)
 	{
-		op_e(line_number, "mul");
+		op_err(line_number, "mul");
 		return;
 	}
 
@@ -163,7 +163,7 @@ void mul(stack_t **temp, unsigned int line_number)
 		j++;
 	}
 	if (i == 0 && flag == 0)
-		free_dlistint(*temp), op_e(line_number, "mul");
+		free_dlistint(*temp), op_err(line_number, "mul");
 	else
 	{
 		pointer2->n = pointer2->n * pointer->n;
@@ -186,7 +186,7 @@ void pchar(stack_t **temp, unsigned int line_number)
 
 	if (*temp == NULL || temp == NULL)
 	{
-		pchar_e(line_number, "stack empty");
+		pchar_err(line_number, "stack empty");
 		return;
 	}
 	pointer = (*temp);
@@ -196,7 +196,7 @@ void pchar(stack_t **temp, unsigned int line_number)
 	}
 	if (pointer->n < 0 || pointer->n > 127)
 	{
-		pchar_e(line_number, "value out of range");
+		pchar_err(line_number, "value out of range");
 	}
 	printf("%c\n", pointer->n);
 }

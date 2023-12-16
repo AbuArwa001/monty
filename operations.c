@@ -86,7 +86,7 @@ void pint(stack_t **temp, unsigned int line_number)
 
 	if (pointer == NULL || *temp == NULL)
 	{
-		pint_e(line_number);
+		pint_err(line_number);
 		return;
 	}
 	pointer = *temp;
@@ -110,11 +110,11 @@ void swap(stack_t **temp, unsigned int line_number)
 	int i, j;
 
 	if (*temp == NULL || temp == NULL)
-		op_e(line_number, "swap");
+		op_err(line_number, "swap");
 
 	pointer = (*temp)->next;
 	if ((*temp)->next == NULL)
-		op_e(line_number, "swap");
+		op_err(line_number, "swap");
 	while (pointer->next != NULL)
 	{
 		pointer = pointer->next;

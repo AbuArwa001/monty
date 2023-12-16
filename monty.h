@@ -172,4 +172,36 @@ void rotrl(stack_t **temp, unsigned int line_number);
  * @line_number: line number of the instruction
  */
 void rotr(stack_t **temp, unsigned int line_number);
+/**
+ * op_err - math func error messagess.
+ * @line_number: line number of the instruction.
+ * @op: Operation where the error occurred.
+ * Return: EXIT_FAILURE
+ */
+void op_err(unsigned int line_number, char *op);
+/**
+ * pchar_err - phar error msg for 0 stack & and non-char val.
+ * @line_number: line number of the instruction
+ * @msg: error message to print.
+ * Return: EXIT_FAILURE.
+ */
+void pchar_err(unsigned int line_number, char *msg);
+/**
+ * div_err - error for div by 0.
+ * @line_number: line number of the instruction.
+ * Return: EXIT_FAILURE
+ */
+void div_err(unsigned int line_number);
+/**
+ * pint_err - pint error message for empty stacks.
+ * @line_number: line number of the instruction.
+ * Return: EXIT_FAILURE
+ */
+void pint_err(unsigned int line_number);
+/**
+ * pop_err - pop error message for empty stacks.
+ * @line_number: line number of the instructions.
+ * Return: EXIT_FAILURE.
+ */
+void pop_err(unsigned int line_number);
 #endif
