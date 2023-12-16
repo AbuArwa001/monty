@@ -7,43 +7,23 @@
  */
 void div_m(stack_t **temp, unsigned int line_number)
 {
-
 	stack_t *pointer = NULL;
 	stack_t *pointer2 = NULL;
-	int i = 0, j = 0, flag = 0;
 
-	if (*temp == NULL || temp == NULL)
+	if (*temp == NULL || (*temp)->next == NULL)
 	{
 		op_err(line_number, "div");
 	}
-
 	pointer = *temp;
-	while (pointer->next != NULL)
+	pointer2 = (*temp)->next;
+	if (pointer->n == 0)
 	{
-		pointer = pointer->next;
-		i++;
-		flag = 1;
+		free_dlistint(*temp);
+		div_err(line_number);
 	}
-	pointer2 = *temp;
-	while (j < (i - 1))
-	{
-		pointer2 = pointer2->next;
-		j++;
-	}
-	if (i == 0 && flag == 0)
-		free_dlistint(*temp), op_err(line_number, "div");
-	else
-	{
-		if (pointer->n == 0)
-			div_err(line_number);
-		pointer2->n = pointer2->n / pointer->n;
-		pointer2->next = NULL;
-		free(pointer);
-		pointer = NULL;
-		return;
-	}
-
-
+	pointer2->n = pointer2->n / pointer->n;
+	*temp = pointer2;
+	free(pointer);
 
 }
 /**
