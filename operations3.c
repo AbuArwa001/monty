@@ -65,7 +65,7 @@ void pstr_t(stack_t **temp, unsigned int line_number)
 	stack_t *pointer = NULL;
 	(void)line_number;
 
-	if (*temp == NULL || temp == NULL)
+	if (*temp == NULL)
 	{
 		printf("\n");
 		exit(0);
@@ -79,16 +79,14 @@ void pstr_t(stack_t **temp, unsigned int line_number)
 		exit(0);
 	}
 	while (pointer->next != NULL)
-		pointer = pointer->next;
-	while (pointer->prev != NULL)
 	{
 		if (pointer->n > 0 && pointer->n < 127)
 		{
 			printf("%c", pointer->n);
-			pointer = pointer->prev;
+			pointer = pointer->next;
 		}
 		else
-			pointer = pointer->prev;
+			pointer = pointer->next;
 		if (pointer->n <= 0 || pointer->n >= 127)
 		{
 			printf("\n");
