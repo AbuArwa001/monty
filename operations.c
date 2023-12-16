@@ -72,3 +72,67 @@ void pall(stack_t **temp, unsigned int line_number)
 		}
 	}
 }
+/**
+ * pint - Print the stack
+ * @temp: head of linkedlist
+ * @line_number: line number of the instruction
+ *
+ * Return: No return
+ */
+void pint(stack_t **temp, unsigned int line_number)
+{
+
+	stack_t *pointer = NULL;
+
+	if (pointer == NULL || *temp == NULL)
+	{
+		pint_e(line_number);
+		return;
+	}
+	pointer = *temp;
+	while (pointer->next != NULL)
+		pointer = pointer->next;
+
+	printf("%d", pointer->n);
+	printf("\n");
+}
+
+/**
+ * swap - Print the stack
+ * @temp: head of linkedlist
+ * @line_number: line number of the instruction
+ *
+ * Return: No return
+ */
+void swap(stack_t **temp, unsigned int line_number)
+{
+	stack_t *pointer;
+	int i, j;
+
+	if (*temp == NULL || temp == NULL)
+		op_e(line_number, "swap");
+
+	pointer = (*temp)->next;
+	if ((*temp)->next == NULL)
+		op_e(line_number, "swap");
+	while (pointer->next != NULL)
+	{
+		pointer = pointer->next;
+	}
+	i = pointer->n;
+	j = pointer->prev->n;
+	pointer->n = j;
+	pointer->prev->n = i;
+}
+/**
+ * nop - does not do anything
+ * @temp: head of linkedlist
+ * @line_number: line number of the instruction
+ *
+ * Return: No return
+ */
+void nop(stack_t **temp, unsigned int line_number)
+{
+	(void)temp;
+	(void)line_number;
+}

@@ -10,6 +10,22 @@ void (*get_op_func(char *s))(stack_t **stack, unsigned int)
 	instruction_t ops[] = {
 		{"push", push},
 		{"pall", pall},
+		{ "add", add },
+		{ "nop", nop },
+		{ "sub", sub },
+		{ "pall", pall },
+		{ "pint", pint },
+		{ "swap", swap },
+		{ "mul", mul },
+		{ "div", div_m },
+		{ "pchar", pchar },
+		{ "mod", mod_m },
+		{ "\n", nop },
+		{ " ", nop },
+		{ "\t", nop },
+		{ "pstr", pstr_t },
+		{ "rotl", rotrl },
+		{ "rotr", rotr },
 		{NULL, NULL}
 	};
 	int i;

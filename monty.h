@@ -85,4 +85,91 @@ char *_strdup(char *str);
  * Return: returns an integer
 */
 int *_atoi(char *str);
+/**
+ * nop - does not do anything
+ * @temp: head of linkedlist
+ * @line_number: line number of the instruction
+ *
+ * Return: No return
+ */
+void nop(stack_t **temp, unsigned int line_number);
+/**
+ * swap - Print the stack
+ * @temp: head of linkedlist
+ * @line_number: line number of the instruction
+ *
+ * Return: No return
+ */
+void swap(stack_t **temp, unsigned int line_number);
+/**
+ * pint - Print the stack
+ * @temp: head of linkedlist
+ * @line_number: line number of the instruction
+ *
+ * Return: No return
+ */
+void pint(stack_t **temp, unsigned int line_number);
+/**
+ * pop - Add node to the stack
+ * @temp: head of linkedlist
+ * @line_number: line number of the instruction
+ *
+ * Return: No return
+ */
+void pop(stack_t **temp, unsigned int line_number);
+/**
+ * add - adds the top two elements of the stack
+ * @temp: head of linkedlist
+ * @line_number: line number of the instruction
+ */
+void add(stack_t **temp, unsigned int line_number);
+/**
+ * sub - subtracts the top e of stack from the 2nd top element of the stack.
+ * @temp: head of linkedlist
+ * @line_number: line number of the instruction
+ */
+
+void sub(stack_t **temp, unsigned int line_number);
+/**
+ * mul - Mul 2nd val from top of a stack_t by top value.
+ * @temp: head of linkedlist
+ * @line_number: line number of the instruction
+ */
+void mul(stack_t **temp, unsigned int line_number);
+/**
+ * pchar - Print char.
+ * @temp: head of linkedlist
+ * @line_number: line number of the instruction
+ */
+void pchar(stack_t **temp, unsigned int line_number);
+/**
+ * div_m - divs 2dn top node by the top element of the stack.
+ * @temp: head of linkedlist
+ * @line_number: line number of the instruction
+ */
+void div_m(stack_t **temp, unsigned int line_number);
+/**
+ * mod_m - mod 2dn top node by the top element of the stack.
+ * @temp: head of linkedlist
+ * @line_number: line number of the instruction
+ */
+void mod_m(stack_t **temp, unsigned int line_number);
+/**
+ * pstr_t - prints the string starting at the top of the stack
+ * @temp: head of linkedlist
+ * @line_number: line number of the instruction
+ */
+void pstr_t(stack_t **temp, unsigned int line_number);
+/**
+ * rotrl - rotate to left
+ * @temp: head of linkedlist
+ * @line_number: line number of the instruction
+ */
+void rotrl(stack_t **temp, unsigned int line_number);
+/**
+ * rotr - rotate to left
+ * @temp: head of linkedlist
+ * @line_number: line number of the instruction
+ */
+void rotr(stack_t **temp, unsigned int line_number);
 #endif
