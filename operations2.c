@@ -9,12 +9,9 @@
  */
 void pop(stack_t **temp, unsigned int line_number)
 {
+	stack_t *pointer;
 
-	stack_t *pointer = NULL;
-	stack_t *pointer2 = NULL;
-	int i = 0, j = 0, flag = 0;
-
-	if (temp == NULL)
+	if (*temp == NULL)
 	{
 		free_dlistint(*temp);
 		pop_err(line_number); }
@@ -23,32 +20,9 @@ void pop(stack_t **temp, unsigned int line_number)
 		free_dlistint(*temp);
 		pop_err(line_number); }
 	pointer = *temp;
-	while (pointer->next != NULL)
-	{
-		pointer = pointer->next;
-		i++;
-		flag = 1;
-	}
-	pointer2 = *temp;
-	while (j < (i - 1))
-	{
-		pointer2 = pointer2->next;
-		j++;
-	}
-	if (i == 0 && flag == 0)
-	{
-
-		free(*temp);
-		*temp = NULL;
-		return;
-	}
-	else
-	{
-		pointer2->next = NULL;
-		free(pointer);
-		pointer = NULL;
-		return;
-	}
+	*temp = (*temp)->next;
+	free(pointer);
+	pointer = NULL;
 }
 /**
  * add - adds the top two elements of the stack

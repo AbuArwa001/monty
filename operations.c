@@ -35,6 +35,7 @@ void push(stack_t **temp, unsigned int line_number)
 			pointer->n = data;
 			(*temp)->prev = pointer;
 			pointer->next = *temp;
+			pointer->prev = NULL;
 
 			*temp = pointer;
 		}
@@ -58,11 +59,13 @@ void pall(stack_t **temp, unsigned int line_number)
 	{
 		return;
 	}
+
 	if (pointer == NULL && line_number != 1)
 	{
 		free_dlistint(pointer);
 		exit(EXIT_SUCCESS);
 	}
+
 	if (pointer != NULL)
 	{
 		while (pointer != NULL)
@@ -89,6 +92,7 @@ void pint(stack_t **temp, unsigned int line_number)
 		pint_err(line_number);
 		return;
 	}
+
 	pointer = *temp;
 	printf("%d", pointer->n);
 	printf("\n");
@@ -103,24 +107,22 @@ void pint(stack_t **temp, unsigned int line_number)
  */
 void swap(stack_t **temp, unsigned int line_number)
 {
-	stack_t *pointer;
-	int i, j;
+	stack_t *pointer = NULL;
 
-	if (*temp == NULL || temp == NULL)
+	if (*temp == NULL || (*temp)->next == NULL)
 		op_err(line_number, "swap");
 
 	pointer = (*temp)->next;
-	if ((*temp)->next == NULL)
-		op_err(line_number, "swap");
-	while (pointer->next != NULL)
-	{
-		pointer = pointer->next;
-	}
-	i = pointer->n;
-	j = pointer->prev->n;
-	pointer->n = j;
-	pointer->prev->n = i;
+
+	(*temp)->next = pointer->next;
+	(*temp)->next->prev = *temp;
+	pointer->next = *temp;
+	pointer->prev = NULL;
+	(*temp)->prev = pointer;
+	*temp = pointer;
+
 }
+
 /**
  * nop - does not do anything
  * @temp: head of linkedlist
