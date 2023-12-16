@@ -58,13 +58,13 @@ void pall(stack_t **temp, unsigned int line_number)
 	{
 		return;
 	}
-	else
+	if (pointer == NULL && line_number != 1)
 	{
-	if (pointer->n == -9999)
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
+		free_dlistint(pointer);
+		exit(EXIT_SUCCESS);
 	}
+	if (pointer != NULL)
+	{
 		while (pointer != NULL)
 		{
 			printf("%d\n", pointer->n);
