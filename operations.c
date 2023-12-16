@@ -56,7 +56,7 @@ void pall(stack_t **temp, unsigned int line_number)
 
 	if (pointer == NULL)
 	{
-		perror("Stack underflow\n");
+		return;
 	}
 	else
 	{
