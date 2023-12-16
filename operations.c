@@ -84,7 +84,7 @@ void pint(stack_t **temp, unsigned int line_number)
 
 	stack_t *pointer = NULL;
 
-	if (pointer == NULL || *temp == NULL)
+	if (*temp == NULL)
 	{
 		pint_err(line_number);
 		return;
