@@ -87,6 +87,11 @@ void pstr_t(stack_t **temp, unsigned int line_number)
 			pointer = pointer->next;
 
 	}
+	if (pointer->n <= 0 || pointer->n >= 127)
+	{
+		printf("\n");
+		return;
+	}
 	printf("%c\n", pointer->n);
 }
 /**
