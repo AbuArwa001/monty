@@ -90,9 +90,6 @@ void pint(stack_t **temp, unsigned int line_number)
 		return;
 	}
 	pointer = *temp;
-	while (pointer->next != NULL)
-		pointer = pointer->next;
-
 	printf("%d", pointer->n);
 	printf("\n");
 }
