@@ -98,16 +98,12 @@ void pchar(stack_t **temp, unsigned int line_number)
 
 	stack_t *pointer;
 
-	if (*temp == NULL || temp == NULL)
+	if (*temp == NULL)
 	{
 		pchar_err(line_number, "stack empty");
 		return;
 	}
 	pointer = (*temp);
-	while (pointer->next != NULL)
-	{
-		pointer = pointer->next;
-	}
 	if (pointer->n < 0 || pointer->n > 127)
 	{
 		pchar_err(line_number, "value out of range");
