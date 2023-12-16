@@ -16,11 +16,11 @@ void process_file(FILE *file)
 
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
+		line_number++;
 		remove_emptyspaces(line);
 		if (strlen(line) == 0 || *line == '#')
 			continue;
 		tk_size = tokenize(&tok, line, " ");
-		line_number++;
 		dt = _atoi(tok[1]);
 		if (dt)
 			data = *dt;
