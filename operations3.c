@@ -109,14 +109,14 @@ void rotrl(stack_t **temp, unsigned int line_number)
 	if (*temp == NULL || ((*temp)->next == NULL))
 		return;
 	pointer = *temp;
-	while (pointer->next != NULL)
-		pointer = pointer->next;
-	pointer2 = pointer->prev;
-	pointer2->next = NULL;
-	pointer->prev = NULL;
-	pointer->next = *temp;
-	(*temp)->prev = pointer;
-	*temp = pointer;
+	pointer2 = *temp;
+	(*temp) = (*temp)->next;
+	while (pointer2->next != NULL)
+		pointer2 = pointer2->next;
+	pointer2->next = pointer;
+	pointer->prev = pointer2;
+	pointer->next = NULL;
+	(*temp)->prev = NULL;
 }
 /**
  * rotr - rotate to left
