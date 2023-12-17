@@ -135,8 +135,7 @@ void rotr(stack_t **temp, unsigned int line_number)
 		pointer2 = pointer2->next;
 	pointer2->next = *temp;
 	(*temp)->prev = pointer2;
-	pointer2 = (*temp)->next;
-	(*temp)->next = NULL;
+	pointer2->prev->next = NULL;
+	pointer2->prev = NULL;
 	*temp = pointer2;
-	(*temp)->prev = NULL;
 }
