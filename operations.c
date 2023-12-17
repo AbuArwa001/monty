@@ -9,39 +9,43 @@ void push(stack_t **temp, unsigned int line_number)
 {
 	stack_t *pointer = malloc(sizeof(stack_t));
 
-
-	if (data == -9999)
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-
+	if (datas.data == -9999)
+		stderr_int(line_number);
 	if (pointer == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
+		stderr_malloc();
 	else
 	{
-		if (*temp == NULL)
+		pointer->n = datas.data;
+		pointer->prev = NULL;
+		if (strcmp(datas.mode, "stack") == 0)
 		{
-			pointer->n = data;
-			pointer->next = NULL;
-			pointer->prev = NULL;
+			pointer->next = *temp;
+			if (*temp != NULL)
+				(*temp)->prev = pointer;
+
 			*temp = pointer;
 		}
 		else
-		{
-			pointer->n = data;
-			(*temp)->prev = pointer;
-			pointer->next = *temp;
-			pointer->prev = NULL;
+			if (strcmp(datas.mode, "queue") == 0)
+			{
+				stack_t *last = *temp;
 
-			*temp = pointer;
-		}
+				if (*temp == NULL)
+				{
+					pointer->next = NULL;
+					*temp = pointer;
+				}
+				else
+				{
+					while (last->next != NULL)
+						last = last->next;
+					last->next = pointer;
+					pointer->next = NULL;
+					pointer->prev = last;
+				}
+			}
 	}
-
-	data = -9999;
+	datas.data = -9999;
 }
 /**
  * pall - displays a doubly linked list
@@ -115,8 +119,10 @@ void swap(stack_t **temp, unsigned int line_number)
 	pointer = (*temp)->next;
 
 	(*temp)->next = pointer->next;
+
 	if (pointer->next != NULL)
 		(*temp)->next->prev = *temp;
+
 	pointer->next = *temp;
 	pointer->prev = NULL;
 	(*temp)->prev = pointer;

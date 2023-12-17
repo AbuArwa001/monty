@@ -1,43 +1,58 @@
 #include "monty.h"
 
-int data = 0;
-
+data_t datas;
+/**
+ * initializeDatas - initialize data
+ */
+void initializeDatas(void)
+{
+	datas.data = 0;
+	datas.size = 0;
+	datas.mode = "stack";
+	datas.arr = NULL;
+}
 /**
  * process_file - Process Monty code from a file
  * @file: FILE pointer to the Monty code file
  */
 void process_file(FILE *file)
 {
-	char line[120];
-	char **tok = NULL;
-	unsigned int line_number = 0, tk_size = 0;
+	char  line[120];
+	unsigned int line_number = 0, *dt = 0;
 	stack_t *temp = NULL;
-	int *dt = 0;
 
+	initializeDatas();
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
 		line_number++;
 		remove_emptyspaces(line);
 		if (strlen(line) == 0 || *line == '#')
 			continue;
-		tk_size = tokenize(&tok, line, " ");
-		dt = _atoi(tok[1]);
+		datas.size = tokenize(&datas.arr, line, " ");
+		dt = _atoi(datas.arr[1]);
 		if (dt)
-			data = *dt;
+			datas.data = *dt;
 		else
-			data = -9999;
+			datas.data = -9999;
 		free(dt);
-		if (get_op_func(tok[0]) != NULL)
-			get_op_func(tok[0])(&temp, line_number);
-		else
+		if (strcmp("stack", datas.arr[0]) == 0)
 		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, tok[0]);
-			exit(EXIT_FAILURE);
+			datas.mode = "stack";
+			free_arr(&datas.arr, datas.size);
+			continue;
 		}
-
-		free_arr(&tok, tk_size);
+		else if (strcmp("queue", datas.arr[0]) == 0)
+		{
+			datas.mode = "queue";
+			free_arr(&datas.arr, datas.size);
+			continue;
+		}
+		if (get_op_func(datas.arr[0]) != NULL)
+			get_op_func(datas.arr[0])(&temp, line_number);
+		else
+			stderr_unknown(datas.arr[0], line_number);
+		free_arr(&datas.arr, datas.size);
 	}
-
 	free_dlistint(temp);
 }
 

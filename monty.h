@@ -21,7 +21,23 @@ typedef struct stack_s
 	struct stack_s *prev;
 	struct stack_s *next;
 } stack_t;
-extern int data;
+/**
+ * struct data_s - doubly linked list representation of a stack (or queue)
+ * @data: integer
+ * @mode: mode to put in the stack
+ * @size: size of the array
+ * @arr: tokinized line
+ *
+ * Description: doubly linked list node structure for stack, queues, LIFO, FIFO
+ */
+typedef struct data_s
+{
+	int data;
+	int size;
+	char *mode;
+	char **arr;
+} data_t;
+extern data_t datas;
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -56,6 +72,12 @@ int tokenize(char ***arr, char *strn, char *delim);
 */
 void push(stack_t **temp, unsigned int line_number);
 /**
+ * push_q - inserts in an doubly linked list
+ * @temp: datastructure to be modified
+ * @line_number: line number to be tracked
+*/
+void push_q(stack_t **temp, unsigned int line_number);
+/**
  * push - inserts in an doubly linked list
  * @temp: datastructure to be modified
  * @line_number: line number to be tracked
@@ -84,7 +106,7 @@ char *_strdup(char *str);
  * @str: string to be converted
  * Return: returns an integer
 */
-int *_atoi(char *str);
+unsigned int *_atoi(char *str);
 /**
  * nop - does not do anything
  * @temp: head of linkedlist
@@ -204,4 +226,28 @@ void pint_err(unsigned int line_number);
  * Return: EXIT_FAILURE.
  */
 void pop_err(unsigned int line_number);
+/**
+ * stderr_usage - usage error.
+ * Return: EXIT_FAILURE
+ */
+void stderr_usage(void);
+/**
+ * stderr_int - error of int.
+ * @line_number: type pointer of line number
+ * Return: EXIT_FAILURE
+ */
+void stderr_int(unsigned int line_number);
+/**
+ * stderr_malloc - Prints malloc error messages.
+ * Return: EXIT_FAILURE
+ */
+
+void stderr_malloc(void);
+/**
+ * stderr_unknown - unknown error messagess.
+ * @line_number: line number of the instruction.
+ * @token: type pointer char of the instruction.
+ * Return: EXIT_FAILURE
+ */
+void stderr_unknown(char *token, unsigned int line_number);
 #endif

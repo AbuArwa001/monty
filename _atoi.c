@@ -22,9 +22,9 @@ int power(int base, int exponent)
  * @str: string to be converted
  * Return: returns an integer
 */
-int *_atoi(char *str)
+unsigned int *_atoi(char *str)
 {
-	int res = 0, minus, *result;
+	unsigned int res = 0, minus, *result;
 
 	if (str == NULL)
 	{
